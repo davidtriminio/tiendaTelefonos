@@ -49,6 +49,7 @@ class UltimasOrdenes extends BaseWidget
 
                 Tables\Columns\TextColumn::make('total_final')
                     ->label('Total de la compra')
+                    ->money()
                     ->searchable()
                     ->sortable(),
 

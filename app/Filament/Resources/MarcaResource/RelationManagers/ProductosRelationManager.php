@@ -8,11 +8,14 @@ use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -65,27 +68,19 @@ class ProductosRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('id')
             ->columns([
-                TextColumn::make('categoria_id'),
-
                 TextColumn::make('nombre'),
 
                 TextColumn::make('slug')
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('imagen'),
-
-                TextColumn::make('descripcion'),
+                TextColumn::make('descripcion')
+                ->limit(20),
 
                 TextColumn::make('precio'),
 
-                TextColumn::make('activo'),
-
-                TextColumn::make('presentado'),
-
-                TextColumn::make('en_existencia'),
-
-                TextColumn::make('en_venta'),
+                IconColumn::make('activo')
+                ->boolean(),
             ])
             ->filters([
                 //
@@ -94,8 +89,11 @@ class ProductosRelationManager extends RelationManager
                 CreateAction::make(),
             ])
             ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
+               ActionGroup::make([
+                   ViewAction::make(),
+                   EditAction::make(),
+                   DeleteAction::make(),
+               ])
             ])
             ->bulkActions([
                 BulkActionGroup::make([

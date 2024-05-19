@@ -55,6 +55,7 @@ class OrdenesRelationManager extends RelationManager
                     ),
 
                 Tables\Columns\TextColumn::make('total_final')
+                    ->money()
                     ->label('Total de la compra'),
 
                 Tables\Columns\TextColumn::make('estado_envio')

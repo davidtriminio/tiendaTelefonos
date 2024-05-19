@@ -21,7 +21,7 @@ class ListOrdens extends ListRecords
     public function getTabs(): array
     {
         return [
-            null => Tab::make('All'),
+            null => Tab::make('Todo'),
             'nuevo' => Tab::make()->query(fn ($query) => $query->where('estado_envio', 'nuevo')),
             'procesado' => Tab::make()->query(fn ($query) => $query->where('estado_envio', 'procesado')),
             'enviado' => Tab::make()->query(fn ($query) => $query->where('estado_envio', 'enviado')),
