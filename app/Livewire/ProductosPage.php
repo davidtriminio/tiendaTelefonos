@@ -2,15 +2,19 @@
 
 namespace App\Livewire;
 
+use App\Helpers\CartManagement;
+use App\Livewire\Complementos\Navbar;
 use App\Models\Categoria;
 use App\Models\Marca;
 use App\Models\Producto;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 
 class ProductosPage extends Component
 {
+    use LivewireAlert;
     #[Title('Productos - Triminios Shop')]
     #[Url]
     public $categorias_seleccionadas = [];
@@ -29,6 +33,17 @@ class ProductosPage extends Component
     #[Url]
     public $sort = 'recientes';
 
+
+    public function addToCart($producto_id){
+        $total_count = CartManagement::addItemToCart($producto_id);
+        $this->dispatch('update-cart-count', total_count: $total_count)->to(Navbar::class);
+        $this->alert('success', 'El producto fue agregado al carrito', [
+            'position' => 'bottom-end',
+            'timer' => 2000,
+            'toast' => true,
+            'timerProgressBar' => true,
+        ]);
+    }
 
     public function render()
     {

@@ -115,10 +115,11 @@
                                         <div
                                             class="flex justify-center p-4 border-t border-gray-300 dark:border-gray-700">
 
-                                            <a href="#"
+                                            <a wire:click.prevent='addToCart( {{ $producto->id }} )' href="#"
                                                class="text-gray-500 flex items-center space-x-2 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-300">
-
-                                                <span>Add to Cart</span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                                <span wire:loading.remove wire:target='addToCart({{$producto->id}})'>Add to Cart</span>
+                                                <span wire:loading wire:target='addToCart({{$producto->id}})'>Agregando...</span>
                                             </a>
 
                                         </div>
