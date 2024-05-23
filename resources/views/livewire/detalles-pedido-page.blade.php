@@ -1,6 +1,38 @@
 <div class="w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
     <h1 class="text-4xl font-bold text-slate-500">Order Details</h1>
 
+    @php
+        $estado_orden = '';
+         if($orden->estado_envio == 'nuevo'){
+             $estado_orden = '<span class="bg-blue-600 py-1 px-3 rounded text-white shadow">Nuevo</span>';
+         } elseif ($orden->estado_envio == 'procesado'){
+             $estado_orden = '<span class="bg-orange-600 py-1 px-3 rounded text-white shadow">En Proceso</span>';
+         } elseif ($orden->estado_envio == 'enviado'){
+             $estado_orden = '<span class="bg-green-400 py-1 px-3 rounded text-white shadow">Enviado</span>';
+         } elseif ($orden->estado_envio == 'entregado'){
+             $estado_orden = '<span class="bg-green-600 py-1 px-3 rounded text-white shadow">Entregado</span>';
+         } else{
+             $estado_orden = '<span class="bg-red-600 py-1 px-3 rounded text-white shadow">Cancelado </span>';
+         }
+
+         $estado_pago = '';
+         if($orden->estado_pago == 'fallo'){
+             $estado_pago = '<span class="bg-red-600 py-1 px-3 rounded text-white shadow">Falló</span>';
+         } elseif ($orden->estado_pago == 'pendiente'){
+             $estado_pago = '<span class="bg-orange-600 py-1 px-3 rounded text-white shadow">Pendiente</span>';
+         } else {
+             $estado_pago = '<span class="bg-green-600 py-1 px-3 rounded text-white shadow">Pagado</span>';
+         }
+
+         $moneda = '';
+         if ($orden -> moneda == 'usd'){
+             $moneda = 'usd';
+         } elseif ($orden -> moneda == 'lps'){
+             $moneda = 'lps';
+         } else{
+              $moneda = 'eur';
+         }
+    @endphp
     <!-- Grid -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-5">
         <!-- Card -->
@@ -18,11 +50,11 @@
                 <div class="grow">
                     <div class="flex items-center gap-x-2">
                         <p class="text-xs uppercase tracking-wide text-gray-500">
-                            Customer
+                         Comprador
                         </p>
                     </div>
                     <div class="mt-1 flex items-center gap-x-2">
-                        <div>Jace Grimes</div>
+                        <div> {{$orden -> direccion -> nombres}} {{$orden -> direccion -> apellidos}}</div>
                     </div>
                 </div>
             </div>
@@ -49,7 +81,7 @@
                     </div>
                     <div class="mt-1 flex items-center gap-x-2">
                         <h3 class="text-xl font-medium text-gray-800 dark:text-gray-200">
-                            17-02-2024
+                            {{$orden -> created_at -> format('d-m-Y')}}
                         </h3>
                     </div>
                 </div>
@@ -74,7 +106,7 @@
                         </p>
                     </div>
                     <div class="mt-1 flex items-center gap-x-2">
-                        <span class="bg-yellow-500 py-1 px-3 rounded text-white shadow">Processing</span>
+                      {!! $estado_orden !!}
                     </div>
                 </div>
             </div>
@@ -100,7 +132,7 @@
                         </p>
                     </div>
                     <div class="mt-1 flex items-center gap-x-2">
-                        <span class="bg-green-500 py-1 px-3 rounded text-white shadow">Paid</span>
+                       {!! $estado_pago !!}
                     </div>
                 </div>
             </div>
@@ -122,34 +154,23 @@
                     </tr>
                     </thead>
                     <tbody>
-
                     <!--[if BLOCK]><![endif]-->
-                    <tr wire:key="53">
-                        <td class="py-4">
-                            <div class="flex items-center">
-                                <img class="h-16 w-16 mr-4" src="http://localhost:8000/storage/products/01HND3J5XS7ZC5J84BK5YDM6Z2.jpg" alt="Product image">
-                                <span class="font-semibold">Samsung Galaxy Watch6</span>
-                            </div>
-                        </td>
-                        <td class="py-4">₹29,999.00</td>
-                        <td class="py-4">
-                            <span class="text-center w-8">1</span>
-                        </td>
-                        <td class="py-4">₹29,999.00</td>
-                    </tr>
-                    <tr wire:key="54">
-                        <td class="py-4">
-                            <div class="flex items-center">
-                                <img class="h-16 w-16 mr-4" src="http://localhost:8000/storage/products/01HND30J0P7C6MWQ1XQK7YDQKA.jpg" alt="Product image">
-                                <span class="font-semibold">Samsung Galaxy Book3</span>
-                            </div>
-                        </td>
-                        <td class="py-4">₹75,000.00</td>
-                        <td class="py-4">
-                            <span class="text-center w-8">5</span>
-                        </td>
-                        <td class="py-4">₹375,000.00</td>
-                    </tr>
+
+                    @foreach($elementos_orden as $elemento)
+                        <tr wire:key="{{$elemento -> id}}">
+                            <td class="py-4">
+                                <div class="flex items-center">
+                                    <img class="h-16 w-16 mr-4" src="{{url('storage', $elemento -> producto ->imagen[0])}}" alt="Product image">
+                                    <span class="font-semibold">{{$elemento-> producto -> nombre}}</span>
+                                </div>
+                            </td>
+                            <td class="py-4">{{Number::currency($elemento -> producto -> precio, 'lps')}}</td>
+                            <td class="py-4">
+                                <span class="text-center w-8">{{$elemento-> cantidad}}</span>
+                            </td>
+                            <td class="py-4">{{Number::currency($elemento-> monto_total, 'lps')}}</td>
+                        </tr>
+                    @endforeach
                     <!--[if ENDBLOCK]><![endif]-->
 
                     </tbody>
@@ -160,11 +181,11 @@
                 <h1 class="font-3xl font-bold text-slate-500 mb-3">Shipping Address</h1>
                 <div class="flex justify-between items-center">
                     <div>
-                        <p>42227 Zoila Glens, Oshkosh, Michigan, 55928</p>
+                        <p>{{$orden ->direccion ->colonia}}, {{$orden ->direccion ->ciudad}}, {{$orden ->direccion ->departamento}}, {{$orden ->direccion ->codigo_postal}}</p>
                     </div>
                     <div>
                         <p class="font-semibold">Phone:</p>
-                        <p>023-509-0009</p>
+                        <p>{{$orden ->direccion ->telefono}}</p>
                     </div>
                 </div>
             </div>
@@ -175,7 +196,7 @@
                 <h2 class="text-lg font-semibold mb-4">Summary</h2>
                 <div class="flex justify-between mb-2">
                     <span>Subtotal</span>
-                    <span>₹404,999.00</span>
+                    <span>{{Number::currency($orden ->total_final, $moneda)}}</span>
                 </div>
                 <div class="flex justify-between mb-2">
                     <span>Taxes</span>
@@ -183,12 +204,12 @@
                 </div>
                 <div class="flex justify-between mb-2">
                     <span>Shipping</span>
-                    <span>₹0.00</span>
+                    <span>{{Number::currency($orden ->costos_envio, $moneda)}}</span>
                 </div>
                 <hr class="my-2">
                 <div class="flex justify-between mb-2">
                     <span class="font-semibold">Grand Total</span>
-                    <span class="font-semibold">₹404,999.00</span>
+                    <span class="font-semibold">{{Number::currency($orden ->total_final, $moneda)}}</span>
                 </div>
 
             </div>

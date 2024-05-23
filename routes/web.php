@@ -35,9 +35,9 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('/pedido', \App\Livewire\PedidoPage::class);
     Route::get('/mis-pedidos', \App\Livewire\MisPedidosPage::class);
-    Route::get('/mis-pedidos/{orden}', \App\Livewire\DetallesPedidoPage::class);
-    Route::get('/exito', \App\Livewire\ExitoPage::class);
-    Route::get('/cancelar', \App\Livewire\CancelarPage::class);
+    Route::get('/mis-pedidos/{orden_id}', \App\Livewire\DetallesPedidoPage::class)->name('mis-pedidos.show');
+    Route::get('/exito', \App\Livewire\ExitoPage::class)->name('exito');
+    Route::get('/cancelar', \App\Livewire\CancelarPage::class)->name('cancelar');
 });
 
 

@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->enum('estado_envio', ['nuevo', 'procesado', 'enviado', 'entregado', 'cancelado'])->default('nuevo');
             $table->decimal('monto_compra', 10,2)->nullable();
             $table->string('metodo_envio')->nullable();
+            $table->decimal('costos_envio', 10,2)->nullable();
             $table->text('notas')->nullable();
             $table->timestamps();
         });

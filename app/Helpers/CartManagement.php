@@ -122,7 +122,7 @@ class CartManagement
         return array_sum(array_column($items, 'monto_total'));
     }
 
-    static public function addItemToCartWithQty($producto_id, $qty = 1)
+    static public function addItemToCartWithQty($producto_id, $cantidad = 1)
     {
         $cart_items = self::getCartItemsFromCookie();
         $existing_item = null;
@@ -135,9 +135,9 @@ class CartManagement
         }
         if ($existing_item !== null) {
             // Incrementar la cantidad del producto existente
-            $cart_items[$existing_item]['cantidad'] = $qty;
-            $cart_items[$existing_item]['monto_total'] = $cart_items[$existing_item]['cantidad'] *
-                $cart_items[$existing_item]['monto_unitario'];
+            $cart_items[$existing_item]['cantidad'] = $cantidad;
+            $cart_items[$existing_item]['monto_total'] = $cantidad * $cart_items[$existing_item]['monto_unitario'];
+
         } else {
             // Agregar nuevo producto al carrito
             $producto = Producto::where('id', $producto_id)->first(['id', 'nombre', 'precio', 'imagen']);
@@ -146,9 +146,9 @@ class CartManagement
                     'producto_id' => $producto_id,
                     'nombre' => $producto->nombre,
                     'imagen' => $producto->imagen[0],
-                    'cantidad' =>  $qty,
+                    'cantidad' => $cantidad,
                     'monto_unitario' => $producto->precio,
-                    'monto_total' => $producto->precio
+                    'monto_total' => $cantidad * $producto->precio
                 ];
             }
         }

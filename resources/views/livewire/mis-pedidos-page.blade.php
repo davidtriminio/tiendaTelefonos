@@ -7,50 +7,79 @@
                     <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead>
                         <tr>
-                            <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Order</th>
-                            <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Date</th>
-                            <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Order Status</th>
-                            <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Payment Status</th>
-                            <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Order Amount</th>
-                            <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Action</th>
+                            <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                Order
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                Date
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                Order Status
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                Payment Status
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                Order Amount
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">
+                                Action
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="odd:bg-white even:bg-gray-100 dark:odd:bg-slate-900 dark:even:bg-slate-800">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">20</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">18-02-2024</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"><span class="bg-orange-500 py-1 px-3 rounded text-white shadow">Pending</span></td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"><span class="bg-green-500 py-1 px-3 rounded text-white shadow">Paid</span></td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">12,000.00</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                <a href="#" class="bg-slate-600 text-white py-2 px-4 rounded-md hover:bg-slate-500">View Details</a>
-                            </td>
-                        </tr>
+                        @foreach($ordenes as $orden)
+                            @php
+                                $estado_orden = '';
+                                 if($orden->estado_envio == 'nuevo'){
+                                     $estado_orden = '<span class="bg-blue-700 py-1 px-3 rounded text-white shadow">Nuevo</span>';
+                                 } elseif ($orden->estado_envio == 'procesado'){
+                                     $estado_orden = '<span class="bg-orange-700 py-1 px-3 rounded text-white shadow">En Proceso</span>';
+                                 } elseif ($orden->estado_envio == 'enviado'){
+                                     $estado_orden = '<span class="bg-green-600 py-1 px-3 rounded text-white shadow">Enviado</span>';
+                                 } elseif ($orden->estado_envio == 'entregado'){
+                                     $estado_orden = '<span class="bg-green-700 py-1 px-3 rounded text-white shadow">Entregado</span>';
+                                 } else{
+                                     $estado_orden = '<span class="bg-red-700 py-1 px-3 rounded text-white shadow">Cancelado </span>';
+                                 }
 
-                        <tr class="odd:bg-white even:bg-gray-100 dark:odd:bg-slate-900 dark:even:bg-slate-800">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">20</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">18-02-2024</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"><span class="bg-orange-500 py-1 px-3 rounded text-white shadow">Pending</span></td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"><span class="bg-green-500 py-1 px-3 rounded text-white shadow">Paid</span></td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">12,000.00</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                <a href="#" class="bg-slate-600 text-white py-2 px-4 rounded-md hover:bg-slate-500">View Details</a>
-                            </td>
-                        </tr>
+                                 $estado_pago = '';
+                                 if($orden->estado_pago == 'fallo'){
+                                     $estado_pago = '<span class="bg-red-700 py-1 px-3 rounded text-white shadow">Falló</span>';
+                                 } elseif ($orden->estado_pago == 'pendiente'){
+                                     $estado_pago = '<span class="bg-orange-700 py-1 px-3 rounded text-white shadow">Pendiente</span>';
+                                 } else {
+                                     $estado_pago = '<span class="bg-green-700 py-1 px-3 rounded text-white shadow">Pagado</span>';
+                                 }
 
-                        <tr class="odd:bg-white even:bg-gray-100 dark:odd:bg-slate-900 dark:even:bg-slate-800">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">20</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">18-02-2024</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"><span class="bg-orange-500 py-1 px-3 rounded text-white shadow">Pending</span></td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"><span class="bg-green-500 py-1 px-3 rounded text-white shadow">Paid</span></td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">12,000.00</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                <a href="#" class="bg-slate-600 text-white py-2 px-4 rounded-md hover:bg-slate-500">View Details</a>
-                            </td>
-                        </tr>
+                                 $moneda = '';
+                                 if ($orden -> moneda == 'usd'){
+                                     $moneda = 'usd';
+                                  } elseif ($orden -> moneda == 'lps'){
+                                      $moneda = 'lps';
+                                  } else{
+                                       $moneda = 'eur';
+                                  }
+                            @endphp
+                            <tr wire:key="{{$orden -> id}}"
+                                class="odd:bg-white even:bg-gray-100 dark:odd:bg-slate-900 dark:even:bg-slate-800">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$orden->id}}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ $orden->created_at ->format('d-m-Y') }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{!! $estado_orden !!}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{!! $estado_pago !!}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{Number::currency($orden -> total_final, $moneda)}}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                    <a href="/mis-pedidos/{{$orden->id}}"
+                                       class="bg-slate-600 text-white py-2 px-4 rounded-md hover:bg-slate-500">View
+                                        Details</a>
+                                </td>
+                            </tr>
+                        @endforeach
 
                         </tbody>
                     </table>
+
+                    {{$ordenes -> links()}}
                 </div>
             </div>
         </div>

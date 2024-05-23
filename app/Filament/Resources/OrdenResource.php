@@ -280,14 +280,10 @@ class OrdenResource extends Resource
                     ->searchable()
                     ->sortable(),
 
-                SelectColumn::make('metodo_envio')
-                    ->options([
-                        'expreco' => 'Cargo Expreco',
-                        'c807' => 'C807 Express',
-                        'cargo_expreso' => 'Cargo Expreso'
-                    ])
+                TextColumn::make('id')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Id de la orden'),
 
                 TextColumn::make('notas')
                     ->searchable()

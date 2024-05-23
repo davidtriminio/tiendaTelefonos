@@ -50,7 +50,7 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                             </label>
                             <input wire:model="telefono"
                                    class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none  @error('telefono') border-red-500 @enderror"
-                                   id="telefono" type="text">
+                                   id="telefono" type="text" inputmode="numeric">
                             </input>
                             @error('telefono')
                             <p class=" text-xs text-red-600 mt-2" id="email-error">{{ $message }}</p>
@@ -300,7 +300,7 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                     </hr>
                 </div>
                 <button type="submit" wire:click="realizarOrden" class="bg-green-500 mt-4 w-full p-3 rounded-lg text-lg text-white hover:bg-green-600">
-                    Place Order
+                   <span wire:loading.remove>Place Order</span> <span wire:loading>Ordenando</span>
                 </button>
                 <div class="bg-white mt-4 rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
                     <div class="text-xl font-bold underline text-gray-700 dark:text-white mb-2">
