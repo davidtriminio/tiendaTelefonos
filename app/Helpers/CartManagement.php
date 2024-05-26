@@ -138,6 +138,7 @@ class CartManagement
             $cart_items[$existing_item]['cantidad'] = $cantidad;
             $cart_items[$existing_item]['monto_total'] = $cantidad * $cart_items[$existing_item]['monto_unitario'];
 
+
         } else {
             // Agregar nuevo producto al carrito
             $producto = Producto::where('id', $producto_id)->first(['id', 'nombre', 'precio', 'imagen']);
