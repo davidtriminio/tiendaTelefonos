@@ -21,7 +21,7 @@
                             <div class="grid gap-y-4">
                                 <!-- Form Group -->
                                 <div>
-                                    <label for="hs-toggle-password" class="block text-sm mb-2 dark:text-white">Password</label>
+                                    <label for="hs-toggle-password" class="block text-sm mb-2 dark:text-white">Contraseña</label>
                                     <div class="relative">
 
                                         <input id="hs-toggle-password" type="password" wire:model="password"
@@ -67,8 +67,7 @@
                                 <!-- End Form Group -->
 
                                 <div>
-                                    <label for="hs-toggle-password_confirmation" class="block text-sm mb-2 dark:text-white">Confirm
-                                        Password</label>
+                                    <label for="hs-toggle-password_confirmation" class="block text-sm mb-2 dark:text-white">Confirmar Contraseña</label>
                                     <div class="relative">
                                         <input id="hs-toggle-password_confirmation" type="password" wire:model="password_confirmation"
                                                class="py-3 px-4 block w-full border-2 border-gray-400 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -112,7 +111,7 @@
 
                                 <button type="submit"
                                         class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                    Save password
+                                    Guardar contraseña
                                 </button>
                             </div>
                         </form>

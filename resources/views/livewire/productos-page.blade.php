@@ -83,8 +83,8 @@
                             <div class="flex items-center justify-between">
                                 <select name="" id="" wire:model.live="sort"
                                         class="block w-40 text-base bg-gray-100 cursor-pointer dark:text-gray-400 dark:bg-gray-900">
-                                    <option value="recientes" >Sort by latest</option>
-                                    <option value="precios" >Sort by Price</option>
+                                    <option value="recientes" >Ordenar por más reciente</option>
+                                    <option value="precios" >Ordenar por precios</option>
                                 </select>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                                             <a wire:click.prevent='addToCart( {{ $producto->id }} )' href="#"
                                                class="text-gray-500 flex items-center space-x-2 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-300">
                                                 <i class="fa-solid fa-cart-shopping"></i>
-                                                <span wire:loading.remove wire:target='addToCart({{$producto->id}})'>Add to Cart</span>
+                                                <span wire:loading.remove wire:target='addToCart({{$producto->id}})'>Añadir a la cesta</span>
                                                 <span wire:loading wire:target='addToCart({{$producto->id}})'>Agregando...</span>
                                             </a>
 

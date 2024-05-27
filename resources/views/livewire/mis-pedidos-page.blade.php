@@ -1,5 +1,5 @@
 <div class="w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
-    <h1 class="text-4xl font-bold text-slate-500">My Orders</h1>
+    <h1 class="text-4xl font-bold text-slate-500">Mis Ordenes</h1>
     <div class="flex flex-col bg-white p-5 rounded mt-4 shadow-lg">
         <div class="-m-1.5 overflow-x-auto">
             <div class="p-1.5 min-w-full inline-block align-middle">
@@ -8,22 +8,22 @@
                         <thead>
                         <tr>
                             <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                                Order
+                                Orden
                             </th>
                             <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                                Date
+                                Fecha
                             </th>
                             <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                                Order Status
+                                Estado del Pedido
                             </th>
                             <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                                Payment Status
+                                Estado del Pago
                             </th>
                             <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                                Order Amount
+                                Total de La Orden
                             </th>
                             <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">
-                                Action
+                                Acciones
                             </th>
                         </tr>
                         </thead>
@@ -70,8 +70,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{Number::currency($orden -> total_final, $moneda)}}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                     <a href="/mis-pedidos/{{$orden->id}}"
-                                       class="bg-slate-600 text-white py-2 px-4 rounded-md hover:bg-slate-500">View
-                                        Details</a>
+                                       class="bg-slate-600 text-white py-2 px-4 rounded-md hover:bg-slate-500">Ver Detalles</a>
                                 </td>
                             </tr>
                         @endforeach

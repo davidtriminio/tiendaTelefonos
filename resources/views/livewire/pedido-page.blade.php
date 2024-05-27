@@ -5,7 +5,7 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
 
 <div class="w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
     <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-        Checkout
+        Pedido
     </h1>
     <form wire:submit.prevent='realizarOrden'>
         <div class="grid grid-cols-12 gap-4">
@@ -15,103 +15,100 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                     <!-- Shipping Address -->
                     <div class="mb-6">
                         <h2 class="text-xl font-bold underline text-gray-700 dark:text-white mb-2">
-                            Shipping Address
+                            Dirección de envío
                         </h2>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-gray-700 dark:text-white mb-1" for="first_name">
-                                    First Name
+                                   Nombres
                                 </label>
                                 <input wire:model="nombres"
-                                       class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none
+                                       class="w-full rounded-lg border border-gray-500 py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none
                                        @error('nombres') border-red-500 @enderror"
                                        id="first_name" type="text">
-                                </input>
                                 @error('nombres')
                                 <p class=" text-xs text-red-600 mt-2" id="email-error">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
                                 <label class="block text-gray-700 dark:text-white mb-1" for="last_name">
-                                    Last Name
+                                    Apellidos
                                 </label>
                                 <input wire:model="apellidos"
-                                       class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none @error('nombres') border-red-500 @enderror"
+                                       class="w-full rounded-lg border border-gray-500 py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none @error('nombres') border-red-500 @enderror"
                                        id="last_name" type="text">
-                                </input>
                                 @error('apellidos')
                                 <p class=" text-xs text-red-600 mt-2" id="email-error">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
-                        <div class="mt-4">
-                            <label class="block text-gray-700 dark:text-white mb-1" for="telefono">
-                                Phone
-                            </label>
-                            <input wire:model="telefono"
-                                   class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none  @error('telefono') border-red-500 @enderror"
-                                   id="telefono" type="text" inputmode="numeric">
-                            </input>
-                            @error('telefono')
-                            <p class=" text-xs text-red-600 mt-2" id="email-error">{{ $message }}</p>
-                            @enderror
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="mt-4">
+                                <label class="block text-gray-700 dark:text-white mb-1" for="telefono">
+                                    Teléfono
+                                </label>
+                                <input wire:model="telefono"
+                                       class="w-full rounded-lg border border-gray-500 py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none  @error('telefono') border-red-500 @enderror"
+                                       id="telefono" type="text" inputmode="numeric">
+                                @error('telefono')
+                                <p class=" text-xs text-red-600 mt-2" id="email-error">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+
+
+                            <div class="mt-4">
+                                <label class="block text-gray-700 dark:text-white mb-1" for="codigo_postal">
+                                    Codigo Postal
+                                </label>
+                                <input wire:model="codigo_postal"
+                                       class="w-full rounded-lg border border-gray-500 py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none @error('codigo_postal') border-red-500 @enderror"
+                                       id="codigo_postal" type="number">
+                                @error('codigo_postal')
+                                <p class=" text-xs text-red-600 mt-2" id="email-error">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="mt-4">
-                            <label class="block text-gray-700 dark:text-white mb-1" for="departamento">
-                                Departamento
-                            </label>
-                            <!-- /.mt-4 -->
-                            <select id="departamento" wire:model="departamento"
-                                    class="border-2 py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 @error('departamento') border-red-500 @enderror">
-                                <option value="">Open this select menu</option>
-                                <?php foreach ($departamentos as $key => $value): ?>
-                                <option value="<?= $key ?>"><?= $value ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                        <!-- /.grid grid-cols-2 gap-4 -->
 
-                            @error('departamento')
-                            <p class=" text-xs text-red-600 mt-2" id="email-error">{{ $message }}</p>
-                            @enderror
-
-                            {{--<label class="block text-gray-700 dark:text-white mb-1" for="municipio">
-                                <select id="municipio"
-                                        class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="mt-4">
+                                <label class="block text-gray-700 dark:text-white mb-1" for="departamento">
+                                    Departamento
+                                </label>
+                                <!-- /.mt-4 -->
+                                <select id="departamento" wire:model="departamento"
+                                        class="border-2 py-3 px-4 pe-9 block w-full border border-gray-500 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 @error('departamento') border-red-500 @enderror">
                                     <option value="">Open this select menu</option>
-                                </select>--}}
-                        </div>
+                                        <?php foreach ($departamentos as $key => $value): ?>
+                                    <option value="<?= $key ?>"><?= $value ?></option>
+                                    <?php endforeach; ?>
+                                </select>
 
-                        <div class="mt-4">
-                            <label class="block text-gray-700 dark:text-white mb-1" for="ciudad">
-                                Municipio
-                            </label>
-                            <input wire:model="ciudad"
-                                   class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none @error('ciudad') border-red-500 @enderror"
-                                   id="ciudad" type="text">
-                            </input>
-                            @error('ciudad')
-                            <p class=" text-xs text-red-600 mt-2" id="email-error">{{ $message }}</p>
-                            @enderror
-                        </div>
+                                @error('departamento')
+                                <p class=" text-xs text-red-600 mt-2" id="email-error">{{ $message }}</p>
+                                @enderror
+                            </div>
 
-                        <div class="mt-4">
-                            <label class="block text-gray-700 dark:text-white mb-1" for="codigo_postal">
-                                Codigo Postal
-                            </label>
-                            <input wire:model="codigo_postal"
-                                   class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none @error('codigo_postal') border-red-500 @enderror"
-                                   id="codigo_postal" type="number">
-                            </input>
-                            @error('codigo_postal')
-                            <p class=" text-xs text-red-600 mt-2" id="email-error">{{ $message }}</p>
-                            @enderror
+                            <div class="mt-4">
+                                <label class="block text-gray-700 dark:text-white mb-1" for="municipio">
+                                    Municipio
+                                </label>
+                                <select id="municipio" wire:model="ciudad"
+                                        class="py-3 px-4 pe-9 block w-full border border-gray-500 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                    <option value="">Selecciona un municipio</option>
+                                </select>
+                            </div>
                         </div>
+                        <!-- /.grid grid-cols-2 gap-4 -->
 
                         <div class="mt-4">
                             <label class="block text-gray-700 dark:text-white mb-1" for="colonia">
                                 Direccion Completa
                             </label>
                             <textarea wire:model="colonia"
-                                   class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none @error('colonia') border-red-500 @enderror"
+                                   class="w-full rounded-lg border border-gray-500 py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none @error('colonia') border-red-500 @enderror"
                                    id="colonia" type="text">
                             </textarea>
                             @error('colonia')
@@ -127,7 +124,7 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                             <input wire:model="metodo_envio" class="hidden peer" id="expreco" name="expreco" required="" type="radio"
                                    value="expreco"/>
                                     <label
-                                        class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                                        class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-500 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                                         for="expreco">
                                         <div class="block">
                                             <div class="w-full text-lg font-semibold">
@@ -148,7 +145,7 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                             <input wire:model="metodo_envio" class="hidden peer" id="c807" name="c807" type="radio"
                                    value="c807">
                             <label
-                                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-500 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                                 for="c807">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">
@@ -168,7 +165,7 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                             <input wire:model="metodo_envio" class="hidden peer" id="expreso" name="expreso" type="radio"
                                    value="expreso">
                             <label
-                                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-500 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                                 for="expreso">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">
@@ -196,7 +193,7 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                             <input wire:model="metodo_pago" class="hidden peer" id="efectivo" name="efectivo" required="" type="radio"
                                    value="efectivo"/>
                             <label
-                                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-500 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                                 for="efectivo">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">
@@ -217,7 +214,7 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                             <input wire:model="metodo_pago" class="hidden peer" id="paypal" name="paypal" type="radio"
                                    value="paypal">
                             <label
-                                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-500 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                                 for="paypal">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">
@@ -237,11 +234,11 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                             <input wire:model="metodo_pago" class="hidden peer" id="tarjeta" name="tarjeta" type="radio"
                                    value="tarjeta">
                             <label
-                                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                                class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-500 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                                 for="tarjeta">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">
-                                        Tarjeta de Credito/Debito
+                                        Tarjeta
                                     </div>
                                 </div>
                                 <svg aria-hidden="true" class="w-5 h-5 ms-3 rtl:rotate-180" fill="none"
@@ -262,7 +259,7 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
             <div class="md:col-span-12 lg:col-span-4 col-span-12">
                 <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
                     <div class="text-xl font-bold underline text-gray-700 dark:text-white mb-2">
-                        ORDER SUMMARY
+                        RESUMEN DEL PEDIDO
                     </div>
                     <div class="flex justify-between mb-2 font-bold">
 					<span>
@@ -274,7 +271,7 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                     </div>
                     <div class="flex justify-between mb-2 font-bold">
 					<span>
-						Taxes
+						Impuestos
 					</span>
                         <span>
 						0.00
@@ -282,7 +279,7 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                     </div>
                     <div class="flex justify-between mb-2 font-bold">
 					<span>
-						Shipping Cost
+						Gastos de envío
 					</span>
                         <span>
 						0.00
@@ -291,7 +288,7 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                     <hr class="bg-slate-400 my-4 h-1 rounded">
                     <div class="flex justify-between mb-2 font-bold">
 					<span>
-						Grand Total
+						 Total Final
 					</span>
                         <span>
 						{{Number::currency($total_final, 'lps')}}
@@ -300,11 +297,11 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
                     </hr>
                 </div>
                 <button type="submit" wire:click="realizarOrden" class="bg-green-500 mt-4 w-full p-3 rounded-lg text-lg text-white hover:bg-green-600">
-                   <span wire:loading.remove>Place Order</span> <span wire:loading>Ordenando</span>
+                   <span wire:loading.remove>Realizar pedido</span> <span wire:loading>Ordenando</span>
                 </button>
                 <div class="bg-white mt-4 rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
                     <div class="text-xl font-bold underline text-gray-700 dark:text-white mb-2">
-                        BASKET SUMMARY
+                        RESUMEN DE LA CESTA
                     </div>
                     <ul class="divide-y divide-gray-200 dark:divide-gray-700" role="list">
                         @forelse($cart_items as $key => $item)
@@ -343,7 +340,25 @@ $municipios = json_decode(file_get_contents(resource_path('assets/municipios.jso
 
 <script>
     const departamentos = <?php echo json_encode($departamentos); ?>;
-    const municipios = <?php echo json_encode($municipios); ?>;
+    const municipios = <?php echo json_encode($municipios); ?>
+
+    var municipiosPorDepartamento = <?php echo json_encode($municipios); ?>;
+
+    document.getElementById('departamento').addEventListener('change', function () {
+        var departamento = this.value;
+        var municipios = municipiosPorDepartamento[departamento];
+        var municipioDropdown = document.getElementById('municipio');
+        municipioDropdown.innerHTML = '<option value="">Selecciona un municipio</option>';
+        if (municipios) {
+            Object.keys(municipios).forEach(function (key) {
+                var option = document.createElement('option');
+                option.value = key;
+                option.text = municipios[key];
+                municipioDropdown.add(option);
+            });
+        }
+    });
+
 </script>
 
 <script src="{{asset('js/deptos.js')}}"></script>

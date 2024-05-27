@@ -24,7 +24,7 @@
                     </path>
                   </svg>
                 </span>
-                                    <h2 class="text-lg font-bold text-gray-700 dark:text-gray-400">Free Shipping</h2>
+                                    <h2 class="text-lg font-bold text-gray-700 dark:text-gray-400">Envío gratuito</h2>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                                 </p>
                             </div>
                             <div class="w-32 mb-8">
-                                <label for="" class="w-full pb-1 text-xl font-semibold text-gray-700 border-b border-blue-300 dark:border-gray-600 dark:text-gray-400">Quantity</label>
+                                <label for="" class="w-full pb-1 text-xl font-semibold text-gray-700 border-b border-blue-300 dark:border-gray-600 dark:text-gray-400">Cantidad</label>
                                 <div class="relative flex flex-row w-full h-10 mt-6 bg-transparent rounded-lg">
                                     <button wire:click='decreaseQty' class="w-20 h-full text-gray-600 bg-gray-300 rounded-l outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 hover:text-gray-700 dark:bg-gray-900 hover:bg-gray-400">
                                         <span class="m-auto text-2xl font-thin">-</span>
@@ -58,7 +58,7 @@
                             </div>
                             <div class="flex flex-wrap items-center gap-4">
                                 <button wire:click='addToCart({{ $producto -> id }})' class="w-full p-4 bg-blue-500 rounded-md lg:w-2/5 dark:text-gray-200 text-gray-50 hover:bg-blue-600 dark:bg-blue-500 dark:hover:bg-blue-700">
-                                    <span wire:loading.remove wire:click='addToCart({{ $producto -> id }})'>Add to cart</span><span wire:loading wire:target="addToCart({{$producto -> id}})">Agregando...</span></button>
+                                    <span wire:loading.remove wire:click='addToCart({{ $producto -> id }})'>Añadir al carrito</span><span wire:loading wire:target="addToCart({{$producto -> id}})">Agregando...</span></button>
                             </div>
                         </div>
                     </div>
