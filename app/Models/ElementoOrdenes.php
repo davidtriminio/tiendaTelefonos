@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ElementoOrden extends Model
+class ElementoOrdenes extends Model
 {
     use HasFactory;
 
-    protected $table = 'elemento_ordenes';
+    protected $table = 'elementos_ordenes';
 
     protected $fillable = ['orden_id', 'producto_id', 'cantidad', 'monto_unitario', 'monto_total'];
 

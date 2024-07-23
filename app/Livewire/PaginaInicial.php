@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class PaginaInicial extends Component
 {
-    #[Title('Pagina Inicial - Triminios Shop')]
+    #[Title('Pagina Inicial - Tienda')]
     public function render()
     {
         $marcas = Marca::where('disponibilidad', 1)->get();

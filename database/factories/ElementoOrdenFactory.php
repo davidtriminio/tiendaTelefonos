@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\ElementoOrden;
+use App\Models\ElementoOrdenes;
 use App\Models\Orden;
 use App\Models\Producto;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 
 class ElementoOrdenFactory extends Factory
 {
-    protected $model = ElementoOrden::class;
+    protected $model = ElementoOrdenes::class;
 
     public function definition(): array
     {

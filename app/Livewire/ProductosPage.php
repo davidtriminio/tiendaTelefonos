@@ -15,7 +15,7 @@ use Livewire\Component;
 class ProductosPage extends Component
 {
     use LivewireAlert;
-    #[Title('Productos - Triminios Shop')]
+    #[Title('Productos - Tienda')]
     #[Url]
     public $categorias_seleccionadas = [];
 

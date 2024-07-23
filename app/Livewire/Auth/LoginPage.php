@@ -15,7 +15,7 @@ class LoginPage extends Component
     public function save(){
         $this->validate([
             'email' => 'required|email|max:255|exists:users,email',
-            'password'=> 'required|min:5|max:30'
+            'password'=> 'required|max:30'
         ], [
             'email.required' => 'El campo correo electrónico es obligatorio.',
             'email.email' => 'El correo electrónico debe ser una dirección de correo válida.',

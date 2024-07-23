@@ -4,20 +4,18 @@ namespace App\Filament\Resources\UsuarioResource\Pages;
 
 use App\Filament\Resources\UsuarioResource;
 use App\Models\User;
-use Filament\Actions\DeleteAction;
+use Filament\Actions;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\CreateRecord;
-use Filament\Resources\Pages\EditRecord;
 use Filament\Resources\Pages\Page;
+use Filament\Resources\Pages\ViewRecord;
 
-class EditUsuario extends EditRecord
+class ViewUsuarios extends ViewRecord
 {
     protected static string $resource = UsuarioResource::class;
-    protected ?string $heading = 'Editar Usuario';
-    protected static ?string $title = 'Editar Usuario';
 
     public function form(Form $form): Form
     {
@@ -71,8 +69,9 @@ class EditUsuario extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        return [
-            DeleteAction::make(),
+        return[
+            Actions\EditAction::make(),
         ];
     }
+
 }

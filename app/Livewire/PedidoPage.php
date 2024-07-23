@@ -14,7 +14,7 @@ use Stripe\Stripe;
 
 class PedidoPage extends Component
 {
-    #[Title('Pedidos - Triminios Store')]
+    #[Title('Pedidos - Tienda')]
 
     public $nombres;
     public $apellidos;
@@ -48,33 +48,33 @@ class PedidoPage extends Component
             'metodo_pago' => 'required',
             'metodo_envio' => 'required'
         ],[
-            'nombres.required' => 'El campo "Nombres" es obligatorio.',
-            'nombres.max' => 'El campo "Nombres" no puede tener más de 100 caracteres.',
-            'nombres.regex' => 'El campo "Nombres" solo puede contener letras y espacios.',
+            'nombres.required' => 'Es necesario introducir uno o más nombres.',
+            'nombres.max' => 'Los nombres no pueden superar los 100 caracteres.',
+            'nombres.regex' => 'Los nombres solo pueden incluir letras y espacios.',
 
-            'apellidos.required' => 'El campo "Apellidos" es obligatorio.',
-            'apellidos.max' => 'El campo "Apellidos" no puede tener más de 100 caracteres.',
-            'apellidos.regex' => 'El campo "Apellidos" solo puede contener letras y espacios.',
+            'apellidos.required' => 'Es necesario introducir uno o más apellidos.',
+            'apellidos.max' => 'Los apellidos no pueden superar los 100 caracteres.',
+            'apellidos.regex' => 'Los apellidos solo pueden incluir letras y espacios.',
 
-            'telefono.required' => 'El campo "Teléfono" es obligatorio.',
-            'telefono.max_digits' => 'El campo "Teléfono" no puede tener más de 8 dígitos.',
-            'telefono.integer' => 'El campo "Teléfono" debe ser un número entero.',
+            'telefono.required' => 'Es necesario proporcionar un número de teléfono.',
+            'telefono.max_digits' => 'El número de teléfono no puede tener más de 8 dígitos.',
+            'telefono.integer' => 'El número de teléfono debe ser un valor numérico.',
 
-            'colonia.required' => 'El campo "Colonia" es obligatorio.',
-            'colonia.string' => 'El campo "Colonia" debe ser un texto.',
+            'colonia.required' => 'Es necesario introducir una colonia.',
+            'colonia.string' => 'La colonia debe consistir en texto.',
 
-            'ciudad.required' => 'El campo "Ciudad" es obligatorio.',
-            'ciudad.string' => 'El campo "Ciudad" debe ser un texto.',
+            'ciudad.required' => 'Es necesario proporcionar una ciudad.',
+            'ciudad.string' => 'La ciudad debe consistir en texto.',
 
-            'departamento.required' => 'El campo "Departamento" es obligatorio.',
-            'departamento.string' => 'El campo "Departamento" debe ser un texto.',
+            'departamento.required' => 'Es necesario proporcionar un departamento.',
+            'departamento.string' => 'El departamento debe consistir en texto.',
 
-            'codigo_postal.numeric' => 'El campo "Código Postal" debe ser un número.',
-            'codigo_postal.max_digits' => 'El campo "Código Postal" no puede tener más de 5 dígitos.',
-            'codigo_postal.min_digits' => 'El campo "Código Postal" no puede tener menos de 5 dígitos.',
+            'codigo_postal.numeric' => 'El código postal debe ser un valor numérico.',
+            'codigo_postal.max_digits' => 'El código postal no puede tener más de 5 dígitos.',
+            'codigo_postal.min_digits' => 'El código postal no puede tener menos de 5 dígitos.',
 
-            'metodo_pago.required' => 'Debes seleccionar un método de pago.',
-            'metodo_envio.required' => 'Debes seleccionar un método de envío.',
+            'metodo_pago.required' => 'Es necesario seleccionar un método de pago.',
+            'metodo_envio.required' => 'Es necesario seleccionar un método de envío.',
         ]);
 
         $cart_items = CartManagement::getCartItemsFromCookie();

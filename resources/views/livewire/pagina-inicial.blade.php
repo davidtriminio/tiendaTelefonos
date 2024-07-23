@@ -4,7 +4,7 @@
             <!-- Grid -->
             <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
                 <div>
-                    <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Empieza tu negocio con <span class="text-blue-600">Triminio´s Shop</span></h1>
+                    <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">Empieza tu negocio con <span class="text-blue-600">Tienda</span></h1>
                     <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Compra una amplia variedad de productos electrónicos como Smartphones, Portátiles, Smartwatches, Televisores y muchos más.</p>
 
                     <!-- Buttons -->

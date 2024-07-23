@@ -16,7 +16,7 @@ class ExitoPage extends Component
     #[Url]
     public $session_id;
 
-    #[Title('Exito - TriminiosShop')]
+    #[Title('Exito - Tienda')]
     public function render()
     {
         $ultima_orden = Orden::with('direccion')->where('user_id', auth()->user()->id)->latest()->first();

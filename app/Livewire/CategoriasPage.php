@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class CategoriasPage extends Component
 {
-    #[Title('Categorias - Triminios Shop')]
+    #[Title('Categorias - Tienda')]
     public function render()
     {
 

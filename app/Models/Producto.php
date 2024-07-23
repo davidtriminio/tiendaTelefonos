@@ -37,6 +37,6 @@ class Producto extends Model
 
     public function elementosOrden()
     {
-        return $this->hasMany(ElementoOrden::class, 'producto_id');
+        return $this->hasMany(ElementoOrdenes::class, 'producto_id');
     }
 }

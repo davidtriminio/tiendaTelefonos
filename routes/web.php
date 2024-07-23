@@ -21,6 +21,7 @@ Route::get('/login', function () {
 Route::get('/municipios', [\App\Http\Controllers\DireccionController::class, 'getMunicipios'])->name('municipios');
 
 Route::get('/', \App\Livewire\PaginaInicial::class);
+Route::get('/home', \App\Livewire\PaginaInicial::class)->name('home');
 
 Route::get('/categorias', \App\Livewire\CategoriasPage::class);
 Route::get('/productos', \App\Livewire\ProductosPage::class);
@@ -47,5 +48,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/recuperacion', \App\Livewire\Auth\ForgotPage::class)->name('password.request');
     Route::get('/reinicio/{token}', \App\Livewire\Auth\ResetPasswordPage::class)->name('password.reset');
 });
+
+
 
 

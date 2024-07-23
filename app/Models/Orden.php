@@ -31,7 +31,7 @@ class Orden extends Model
 
     public function elementos()
     {
-        return $this->hasMany(ElementoOrden::class, 'orden_id');
+        return $this->hasMany(ElementoOrdenes::class, 'orden_id');
     }
 
     public function direccion()

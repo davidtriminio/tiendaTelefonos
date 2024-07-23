@@ -177,7 +177,11 @@ class OrdenResource extends Resource
                                     ->required()
                                     ->dehydrated()
                                     ->reactive()
+                                    ->step(0.01)
                                     ->columnSpan(3)
+                                    ->extraAttributes([
+                                        'step' => '0.01'
+                                    ])
                             ])->columns(12),
 
                         Placeholder::make('total_final_placeholder')
