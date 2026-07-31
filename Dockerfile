@@ -21,6 +21,9 @@ RUN apt-get update && apt-get install -y \
 
 RUN a2enmod rewrite
 
+RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf \
+    && sed -ri -e 's!/var/www/!/var/www/html/public!g' /etc/apache2/apache2.conf
+
 WORKDIR /var/www/html
 
 COPY . .
@@ -32,7 +35,8 @@ RUN composer install --no-dev --optimize-autoloader
 
 RUN npm install && npm run build
 
-RUN chown -R www-data:www-data storage bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 storage bootstrap/cache
 
 EXPOSE 80
 
