@@ -43,5 +43,4 @@ class DetallesProductoPage extends Component
         return view('livewire.detalles-producto-page',
         ['producto' => Producto::where('slug', $this->slug)->firstOrFail()]);
     }
-
 }

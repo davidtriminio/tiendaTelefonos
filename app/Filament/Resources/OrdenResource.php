@@ -357,12 +357,9 @@ class OrdenResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         $details = [];
-
-
         if ($record->user) {
             $details['Usuario'] = $record->user->name;
         }
-
         return $details;
     }
 
