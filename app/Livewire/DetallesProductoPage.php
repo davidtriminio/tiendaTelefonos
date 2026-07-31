@@ -28,8 +28,8 @@ class DetallesProductoPage extends Component
     }
 
     public function addToCart($producto_id) {
-        $total_count = CartManagement::addItemToCartWithQty($producto_id, $this->cantidad);
-        $this->dispatch('update-cart-count', total_count: $total_count)->to(Navbar::class);
+        $conteo_total = CartManagement::addItemToCartWithQty($producto_id, $this->cantidad);
+        $this->dispatch('update-cart-count', conteo_total: $conteo_total)->to(Navbar::class);
         $this->alert('success', 'El producto fue agregado al carrito', [
             'position' => 'bottom-end',
             'timer' => 2000,
