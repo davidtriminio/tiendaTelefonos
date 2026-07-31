@@ -4,9 +4,20 @@ RUN apt-get update && apt-get install -y \
     git \
     unzip \
     libpq-dev \
+    libicu-dev \
+    libzip-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libfreetype6-dev \
     nodejs \
     npm \
-    && docker-php-ext-install pdo pdo_pgsql
+    && docker-php-ext-install \
+        pdo \
+        pdo_pgsql \
+        intl \
+        zip \
+        exif \
+        gd
 
 RUN a2enmod rewrite
 
